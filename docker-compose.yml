@@ -1,0 +1,31 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres
+    ports:
+      - "9876:5432"
+    restart: always
+    environment:
+      POSTGRES_USER: shortener
+      POSTGRES_PASSWORD: 6LUfL24o2tDjgB
+      POSTGRES_DB: url_shortener
+    volumes:
+      - ${PWD}/volumes/postgres-shortener/data:/var/lib/postgresql/data
+      - ${PWD}/database/init.sql:/docker-entrypoint-initdb.d/init.sql
+  backend:
+    image: dosaki/shortener-backend
+    ports:
+      - "8080:8080"
+    restart: always
+    environment:
+      SPRING_DATASOURCE_USERNAME: shortener
+      SPRING_DATASOURCE_PASSWORD: 6LUfL24o2tDjgB
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/url_shortener
+  frontend:
+    image: dosaki/shortener-frontend
+    ports:
+      - "4200:80"
+    restart: always
+    environment:
+      "BACKEND_URL": "http://localhost:8080"

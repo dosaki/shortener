@@ -1,0 +1,47 @@
+.main {
+    height: 100%;
+    padding: 0 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form > * {
+    margin: 4px 0;
+    width: 100%;
+}
+
+.table {
+    border-spacing: 0;
+    border: 1px solid black;
+}
+
+.table-row {
+    background: #ffffff;
+}
+
+.table-row:nth-child(even) {
+    background: #cbcbcb;
+}
+
+.header {
+    background: #6c6c6c;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.table-cell {
+    max-width: 350px;
+    min-width: 200px;
+    overflow: hidden;
+    padding: 8px;
+    border-right: 1px solid black;
+}

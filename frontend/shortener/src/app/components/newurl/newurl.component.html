@@ -1,0 +1,10 @@
+<div class="main">
+    <div *ngIf="shortUrl" class="result">
+        <div>Original url: <a [href]="url">{{url}}</a></div>
+        <div>Your short url: <a [href]="shortUrl">{{shortUrl}}</a></div>
+    </div>
+    <div class="shorten-url">
+        <input class="url-input" placeholder="Enter your url" [(ngModel)]="url" />
+        <button class="action" (click)="sendUrl()">Shorten it!</button>
+    </div>
+</div>

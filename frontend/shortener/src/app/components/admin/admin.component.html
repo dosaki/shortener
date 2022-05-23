@@ -1,0 +1,28 @@
+<div class="main">
+    <div class="login-form" *ngIf="!authenticated">
+        <input class="url-input" placeholder="Username" [(ngModel)]="username" (keyup.enter)="authenticate()" />
+        <input class="url-input" type="password" placeholder="Password" [(ngModel)]="password" (keyup.enter)="authenticate()" />
+        <button class="action" (click)="authenticate()">Authenticate</button>
+    </div>
+    <div class="login-form" *ngIf="authenticated">
+        <button (click)="refresh()">Refresh</button>
+        <table class="table">
+            <thead>
+                <tr class="table-row  header">
+                    <th>Original URL</th>
+                    <th>Output URL</th>
+                    <th>Generation Date</th>
+                    <th>Visits No.</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let urlInfo of urlInfoList" class="table-row">
+                    <td class="table-cell"><a [href]="urlInfo.originalURL">{{urlInfo.originalURL}}</a></td>
+                    <td class="table-cell"><a [href]="urlInfo.asShortenedUrl(serverUrl)">{{urlInfo.asShortenedUrl(serverUrl)}}</a></td>
+                    <td class="table-cell">{{urlInfo.createdAt}}</td>
+                    <td class="table-cell">{{urlInfo.visits}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
